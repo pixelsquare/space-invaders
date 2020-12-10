@@ -252,7 +252,7 @@ public:
 	void FireBullet(const PrimitiveType *primitive, float spd, Vector3 dir) {
 		if(gameState == StartGame) return;
 		if(!this->alive) return;
-		Sound::Play("Space Invaders_Data\\Shoot.wav");
+		Sound::Play("assets\\Shoot.wav");
 
 		Bullet *tmpInstance = new Bullet;
 		tmpInstance->bulletInstance = new Primitive;
@@ -318,7 +318,7 @@ public:
 			this->life--;
 		
 		if(this->life == 0) {
-			Sound::Play("Space Invaders_Data\\Explosion.wav");
+			Sound::Play("assets\\Explosion.wav");
 			this->DestroyShip();
 			this->shipExplosion->SetMaxEnergy(1.5f);
 			this->shipExplosion->Initialize(this->position, 100, 40);
@@ -531,7 +531,7 @@ public:
 
 		if(tmpObj->life == 0) {
 			score += Mathf::RandomRange(5, 10);
-			Sound::Play("Space Invaders_Data\\Explosion1.wav");
+			Sound::Play("assets\\Explosion1.wav");
 			this->enemyParticle->SetMaxEnergy(0.5f);
 			this->enemyParticle->Initialize(tmpObj->instance->GetPosition(), 30, 30);
 
@@ -624,9 +624,9 @@ void AtomEngine::Start() {
 	Ship->SetPosition(0.0f, -35.0f, 0.0f);
 	Ship->SetShipScale(Vector3::One * 0.5f);
 	if(!isDebugging) {
-		Ship->Initialize("Space Invaders_Data\\Spaceshipbody.obj", 
-						"Space Invaders_Data\\Spaceshipred.obj", 
-						"Space Invaders_Data\\Spaceshipblue.obj");
+		Ship->Initialize("assets\\Spaceshipbody.obj", 
+						"assets\\Spaceshipred.obj", 
+						"assets\\Spaceshipblue.obj");
 	}
 	else {
 		Ship->Initialize("Spaceshipbody.obj", 
@@ -638,7 +638,7 @@ void AtomEngine::Start() {
 	easyEnemy->SetColor(Color::White);
 	easyEnemy->SetPosition(-25.0f, 15.0f, 0.0f);
 	if(!isDebugging)
-		easyEnemy->Initialize("Space Invaders_Data\\Crab_2OBJ.obj", -10.0f, 10.0f, 5, 2.5f);
+		easyEnemy->Initialize("assets\\Crab_2OBJ.obj", -10.0f, 10.0f, 5, 2.5f);
 	else
 		easyEnemy->Initialize("Crab_2OBJ.obj", -10.0f, 10.0f, 5, 2.5f);
 
@@ -646,7 +646,7 @@ void AtomEngine::Start() {
 	medEnemy->SetColor(Color::Cyan);
 	medEnemy->SetPosition(-25.0f, 20.0f, 0.0f);
 	if(!isDebugging)
-		medEnemy->Initialize("Space Invaders_Data\\Crab_2OBJ.obj", -10.0f, 10.0f, 5, 2.5f);
+		medEnemy->Initialize("assets\\Crab_2OBJ.obj", -10.0f, 10.0f, 5, 2.5f);
 	else
 		medEnemy->Initialize("Crab_2OBJ.obj", -10.0f, 10.0f, 5, 2.5f);
 
@@ -654,7 +654,7 @@ void AtomEngine::Start() {
 	hardEnemy->SetColor(Color::Magenta);
 	hardEnemy->SetPosition(-25.0f, 25.0f, 0.0f);
 	if(!isDebugging)
-		hardEnemy->Initialize("Space Invaders_Data\\Crab_2OBJ.obj", -10.0f, 10.0f, 5, 2.5f);
+		hardEnemy->Initialize("assets\\Crab_2OBJ.obj", -10.0f, 10.0f, 5, 2.5f);
 	else
 		hardEnemy->Initialize("Crab_2OBJ.obj", -10.0f, 10.0f, 5, 2.5f);
 
@@ -664,7 +664,7 @@ void AtomEngine::Start() {
 bool randomOnce = false;
 void AtomEngine::Update() {
 	if(gameHasStarted) {
-		Sound::PlayLoop("Space Invaders_Data\\Theme.wav");
+		Sound::PlayLoop("assets\\Theme.wav");
 		gameHasStarted = false;
 	}
 
@@ -770,7 +770,7 @@ void AtomEngine::TextRender() {
 
 		if(!gameHasEnded) {
 			if(changeSound->LocalTimeElapsed() > 3.0f) {
-				Sound::PlayLoop("Space Invaders_Data\\Theme.wav");
+				Sound::PlayLoop("assets\\Theme.wav");
 				gameHasEnded = true;
 			}
 		}
